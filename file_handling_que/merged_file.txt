@@ -1,0 +1,16 @@
+--- app.log ---
+[2026-06-22 12:23:51] - app starting...
+[2026-06-22 12:23:51] - app running...
+[2026-06-22 12:23:51] - app closed
+
+--- students.csv ---
+Name,Age,Score
+std1,18,91
+std2,19,85
+std3,17,90
+std4,20,95
+std5,21,70
+std6,20,65
+
+--- paragraph.txt ---
+The the diligent student read the dense textbook carefully to find the core answer. After finding the answer, the student wrote the final report quickly. The teacher praised the report because the report was exceptionally thorough and well-researched.

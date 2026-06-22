@@ -132,7 +132,7 @@ that writes a list of rows to a CSV file, ensuring no blank rows appear between 
 """
 
 def write_students_csv(filename, data):
-    with open(filename, "a", newline="") as f:
+    with open(filename, "w", newline="") as f:
         writer = csv.writer(f)
         for row in data:
             writer.writerow(row)
@@ -173,7 +173,7 @@ def top_students(student_file):
         writer.writeheader()
         writer.writerows(top_stu)
 
-top_students("students.csv")
+# top_students("students.csv")
 
 
 """
@@ -191,6 +191,50 @@ def read(filename):
     return read_result, readline_result, readlines_result
 
 read_result, readline_result, readlines_result = read("top_students.csv")
-print(f"read result\n{read_result}")
-print(f"readline result\n{readline_result}")
-print(f"readlines result\n{readlines_result}")
+# print(f"read result\n{read_result}")
+# print(f"readline result\n{readline_result}")
+# print(f"readlines result\n{readlines_result}")
+
+"""
+Q13. Write a function word_count(filename) 
+that returns a dictionary mapping each word to how many times it appears in the file 
+(case-insensitive).
+"""
+def word_count(filename):
+    with open(filename, "r") as f:
+        data = f.read()
+    word_map = {}
+    for word in data:
+        word_map[word] = data.count(word)
+    return word_map
+
+# print(word_count("paragraph.txt"))
+
+"""
+Q14. Write code using "w+" mode that writes three lines, 
+then seeks back to the start and reads/prints the full content in the same with block.
+"""
+def write_and_read_file(filename):
+    with open(filename, "w+") as f:
+        f.write("'r' - open for reading (default)\n'w' - open for writing, truncating the file first\n'x' - create a new file and open it for writing")
+        f.seek(0)
+        data = f.read()
+        print(data)
+
+# write_and_read_file("w_and_r.txt")
+
+"""
+Q15. Write a function merge_files(file_list, output) 
+that concatenates several text files into one output file, 
+adding a header line --- filename --- before each file's content.
+"""
+
+def merge_files(file_list, output):
+    with open(output, "a") as output_f:
+        for file in file_list:
+            with open(file, "r") as f:
+                data = f.read()
+            output_f.write(f"--- {file} ---\n{data}\n")
+
+file_list = ["app.log", "students.csv", "paragraph.txt"]
+# merge_files(file_list, "merged_file.txt")
